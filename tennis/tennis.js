@@ -1,14 +1,24 @@
 export function getScores(playerA, playerB) {
+  const scores = [
+    ["L-L", "L-15", "L-30", "L-40"],
+    ["15-L", "15-15", "15-30", "15-40"],
+    ["30-L", "30-15", "30-30", "30-40"],
+    ["40-L", "40-15", "40-30", "Deuce"],
+  ];
+
+  if (playerA < 4 && playerB < 4) {
+    return scores[playerA][playerB];
+  }
+
+  if (playerB == 0) {
+    switch (playerA) {
+      case 4:
+        return "A won";
+    }
+  }
+
   if (playerB == 1) {
     switch (playerA) {
-      case 0:
-        return "L-15";
-      case 1:
-        return "15-15";
-      case 2:
-        return "30-15";
-      case 3:
-        return "40-15";
       case 4:
         return "A won";
     }
@@ -16,32 +26,32 @@ export function getScores(playerA, playerB) {
 
   if (playerB == 2) {
     switch (playerA) {
-      case 0:
-        return "L-30";
-      case 1:
-        return "15-30";
-      case 2:
-        return "30-30";
-      case 3:
-        return "40-30";
       case 4:
         return "A won";
     }
   }
   if (playerB == 3) {
     switch (playerA) {
-      case 0:
-        return "L-40";
-      case 1:
-        return "15-40";
-      case 2:
-        return "30-40";
-      case 3:
-        return "Deuce";
       case 4:
         return "Adv A";
       case 5:
         return "A won";
+    }
+  }
+  if (playerB == 4) {
+    switch (playerA) {
+      case 0:
+        return "B won";
+      case 1:
+        return "B won";
+      case 2:
+        return "B won";
+      case 3:
+        return "Adv B";
+      case 4: // invalid
+        return "Adv B";
+      case 5: // invalid
+        return "Adv B";
     }
   }
 
